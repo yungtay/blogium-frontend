@@ -10,7 +10,11 @@ export default function NewStoryPage() {
   const [isSaveButtonDisabled, setSaveButtonDisable] = useState(false);
   const history = useHistory();
 
-  function onPostSaveButtonClick() {}
+  function onPostSaveButtonClick() {
+    const promisse = axios.post("http://localhost:5000/posts", {title, coverUrl, content})
+    promisse.then(() => alert("Postado"))
+    promisse.catch(() => alert("Houve um erro ao postar"))
+  }
 
   return (
     <PostManipulation
