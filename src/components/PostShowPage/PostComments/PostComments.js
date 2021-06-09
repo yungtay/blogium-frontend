@@ -12,14 +12,12 @@ export default function PostComments({ postId }) {
       id: 1,
       postId: postId,
       author: 'João',
-      content: 'Muito bom esse post! Tá de parabéns',
-      publishedAt: '2021-06-09 12:00:00'
+      content: 'Muito bom esse post! Tá de parabéns'
     }, {
       id: 2,
       postId: postId,
       author: 'Maria',
-      content: 'Como faz pra dar palmas?',
-      publishedAt: '2021-06-09 12:00:00'
+      content: 'Como faz pra dar palmas?'
     }])
   }, [postId]);
   

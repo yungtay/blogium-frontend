@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Title from './Title';
 import PostContent from '../../../components/PostContent';
 import Meta from './Meta';
-import dayjs from 'dayjs';
 
 export default function PostText({ post }) {
   const readTimeEstimateInMinutes = Math.ceil(post.content.split(' ').length / 150);
@@ -12,7 +11,7 @@ export default function PostText({ post }) {
     <Container>
       <Title>{post.title}</Title>
       <Meta>
-        {dayjs(post.publishAt).format('DD/MM/YYYY HH:MM')} · {readTimeEstimateInMinutes} MIN
+        Estimated Read Time: {readTimeEstimateInMinutes} MIN
       </Meta>
       <PostContent dangerouslySetInnerHTML={{ __html: post.content }} />
     </Container>
