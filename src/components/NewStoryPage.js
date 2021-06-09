@@ -12,7 +12,10 @@ export default function NewStoryPage() {
 
   function onPostSaveButtonClick() {
     const promisse = axios.post("http://localhost:5000/posts", {title, coverUrl, content})
-    promisse.then(() => alert("Postado"))
+    promisse.then(() => {
+      alert("Postado");
+      history.push("/");
+    });
     promisse.catch(() => alert("Houve um erro ao postar"))
   }
 
