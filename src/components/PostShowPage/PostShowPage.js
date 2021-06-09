@@ -15,13 +15,9 @@ export default function PostShowPage() {
   const history = useHistory();
 
   useEffect(() => {
-    setPost({
-      id: 1,
-      title: 'Hello World',
-      coverUrl: 'https://miro.medium.com/max/1024/1*OohqW5DGh9CQS4hLY5FXzA.png',
-      contentPreview: 'Esta é a estrutura de um post esperado pelo front-end',
-      content: 'Este é o conteúdo do post, o que realmente vai aparecer na página do post...'
-    })
+    const promisse = axios.get(`http://localhost:5000/posts/${postId}`);
+    promisse.then((response) => setPost(response.data));
+    promisse.catch(() => alert("Não foi possível buscar os posts"));
   }, [postId]);
 
   function onEditButtonClick() {
