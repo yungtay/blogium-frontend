@@ -27,7 +27,7 @@ export default function PostEditPage() {
   function onPostSaveButtonClick() {
     const promisse = axios.put(`http://localhost:5000/posts/${postId}`, {title, coverUrl, content})
     promisse.then(() => history.push(`/posts/${postId}`))
-    promisse.catch(() => alert("Não foi possivel editar o post"))
+    promisse.catch(() => promisse.catch((error) => alert(error.response.data)))
   }
 
   if (!post || !content) return <Spinner />;

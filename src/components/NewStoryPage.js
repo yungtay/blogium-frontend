@@ -16,8 +16,8 @@ export default function NewStoryPage() {
       alert("Postado");
       history.push("/");
     });
-    promisse.catch(() => alert("Houve um erro ao postar"))
-  }
+    promisse.catch((error) => alert(error.response.data)
+    )}
 
   return (
     <PostManipulation
