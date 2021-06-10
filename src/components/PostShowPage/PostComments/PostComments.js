@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import Comment from './Comment';
 import AddComment from './AddComment';
@@ -8,17 +9,9 @@ export default function PostComments({ postId }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    setComments([{
-      id: 1,
-      postId: postId,
-      author: 'João',
-      content: 'Muito bom esse post! Tá de parabéns'
-    }, {
-      id: 2,
-      postId: postId,
-      author: 'Maria',
-      content: 'Como faz pra dar palmas?'
-    }])
+    const promisse = axios.get(`http://localhost:5000/posts/${postId}/comments`)
+    promisse.then((response) => setComments(response.data))
+    promisse.catch(() => alert("Não foi possivel carregar os comentários"))
   }, [postId]);
   
   return (

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import Button from '../../Button';
 
@@ -8,7 +9,9 @@ export default function AddComment({ postId }) {
   const [content, setContent] = useState('');
 
   function onAddCommentButtonClick() {
-    alert('No futuro isso vai adicionar o comentário :)');
+    const promisse = axios.post(`http://localhost:5000/posts/${postId}/comments`, {postId, author: name, content})
+    promisse.then(() => alert("Postado"))
+    promisse.catch(() => alert("Não foi possível postar"))
 
     setName('');
     setContent('');
