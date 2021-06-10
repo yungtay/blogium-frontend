@@ -25,8 +25,12 @@ export default function PostShowPage() {
   }
 
   function onDeleteButtonClick() {
-    alert('No futuro, ao clicar neste botão o post vai ser excluído de verdade :)');
-    history.push('/');
+    const promisse = axios.delete(`http://localhost:5000/posts/${postId}`);
+    promisse.then(() => {
+      alert("Post apagado");
+      history.push("/");
+    });
+    promisse.catch(() => alert("Não foi possível deletar o post"));
   }
 
   if (!post) return <Spinner />;
